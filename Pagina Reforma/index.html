@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demão Reformas e Pintura</title>
+  <meta name="description"
+    content="Pintura interna e externa, massa corrida, textura, gesso e pequenas reformas. Orçamento sem compromisso.">
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+  <!-- Estilos da página -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="top">
+    <div class="wrap">
+      <div class="logo" id="logo">Demão<span>.</span></div>
+      <nav>
+        <a href="#servicos">Serviços</a>
+        <a href="#orcamento">Simular orçamento</a>
+        <a href="#cores">Testar cores</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div>
+        <span class="tape">Reformas e pintura residencial</span>
+        <h1>Sua casa com cara de <em>nova</em>, sem dor de cabeça.</h1>
+        <p>Pintura interna e externa, massa corrida, textura, gesso e pequenas reformas. Visita sem compromisso,
+          orçamento por escrito e obra entregue limpa.</p>
+        <div class="cta-row">
+          <a class="btn" href="#orcamento">Simular meu orçamento</a>
+          <a class="btn ghost" href="#contato">Pedir visita</a>
+        </div>
+      </div>
+      <div class="fan" id="fan" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <span class="tape">O que fazemos</span>
+      <h2 style="margin-top:14px">Serviços</h2>
+      <div class="services" id="services"></div>
+    </div>
+  </section>
+
+  <section id="orcamento" style="background:var(--surface);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <span class="tape">Simulador</span>
+      <h2 style="margin-top:14px">Quanto fica a sua obra?</h2>
+      <p class="note" style="margin-top:8px">Uma estimativa rápida. O valor final sai depois da visita técnica.</p>
+      <div class="panel" style="background:var(--bg)">
+        <div>
+          <div class="field">
+            <label for="svc">Serviço</label>
+            <select id="svc"></select>
+          </div>
+          <div class="field">
+            <label for="area">Área a ser feita (m²)</label>
+            <div class="area-row">
+              <input type="range" id="areaRange" min="5" max="400" step="5" value="60"
+                aria-label="Área em metros quadrados">
+              <input type="number" id="area" min="1" max="2000" value="60">
+            </div>
+            <span class="note">Dica: parede de 3 × 2,7 m ≈ 8 m². Um quarto inteiro fica entre 30 e 40 m² de
+              parede.</span>
+          </div>
+          <div class="field">
+            <span style="font-weight:700;font-size:.95rem">Estado da superfície</span>
+            <div class="seg" id="estado" role="group" aria-label="Estado da superfície">
+              <button type="button" data-f="1" aria-pressed="true">Bom</button>
+              <button type="button" data-f="1.15" aria-pressed="false">Com rachaduras</button>
+              <button type="button" data-f="1.3" aria-pressed="false">Umidade / mofo</button>
+            </div>
+          </div>
+          <div class="field">
+            <label><input type="checkbox" id="material" checked> Incluir material (tinta, massa, lixa)</label>
+          </div>
+        </div>
+        <div class="result" aria-live="polite">
+          <span class="note">Estimativa</span>
+          <div class="big" id="total">—</div>
+          <div class="breakdown" id="breakdown"></div>
+          <span class="note" id="prazo"></span>
+          <a class="btn" href="#contato" id="usarEstimativa" style="justify-self:start">Pedir orçamento com estes
+            dados</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cores">
+    <div class="wrap">
+      <span class="tape">Antes de pintar</span>
+      <h2 style="margin-top:14px">Teste a cor na parede</h2>
+      <div class="viz">
+        <svg class="room" viewBox="0 0 600 380" role="img" aria-label="Sala com a parede do fundo na cor escolhida">
+          <rect id="wall" x="0" y="0" width="600" height="300" fill="#7f9c8a" />
+          <rect x="0" y="0" width="600" height="300" fill="url(#shade)" />
+          <defs>
+            <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#000" stop-opacity=".12" />
+              <stop offset=".5" stop-color="#000" stop-opacity="0" />
+              <stop offset="1" stop-color="#000" stop-opacity=".1" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="292" width="600" height="8" fill="#e9e5df" />
+          <rect x="0" y="300" width="600" height="80" fill="#b58a5e" />
+          <g stroke="#9a7148" stroke-width="2">
+            <line x1="0" y1="330" x2="600" y2="330" />
+            <line x1="0" y1="358" x2="600" y2="358" />
+          </g>
+          <rect x="380" y="60" width="150" height="110" fill="#dfe9f0" stroke="#f4f4f4" stroke-width="8" />
+          <line x1="455" y1="60" x2="455" y2="170" stroke="#f4f4f4" stroke-width="6" />
+          <rect x="70" y="200" width="250" height="70" rx="10" fill="#3b4148" />
+          <rect x="80" y="170" width="230" height="45" rx="10" fill="#4a525b" />
+          <rect x="90" y="190" width="50" height="40" rx="8" fill="#e3b04b" />
+          <rect x="80" y="270" width="10" height="26" fill="#2a2f35" />
+          <rect x="300" y="270" width="10" height="26" fill="#2a2f35" />
+          <rect x="110" y="70" width="120" height="80" fill="#f4f1ea" stroke="#2a2f35" stroke-width="4" />
+          <path d="M120 140 L160 100 L185 125 L200 110 L220 140 Z" fill="#7b8f9e" />
+          <rect x="350" y="230" width="18" height="70" fill="#6b4c32" />
+          <ellipse cx="359" cy="220" rx="32" ry="38" fill="#3f6b45" />
+        </svg>
+        <div>
+          <div class="swatches" id="swatches"></div>
+          <p class="cur-color" id="curColor"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--surface);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <span class="tape">Como trabalhamos</span>
+      <h2 style="margin-top:14px">Do primeiro contato à entrega</h2>
+      <ol class="steps">
+        <li>
+          <h3>Visita</h3>
+          <p>Medimos os ambientes e avaliamos umidade, trincas e acabamento atual.</p>
+        </li>
+        <li>
+          <h3>Orçamento</h3>
+          <p>Proposta por escrito com material, mão de obra e prazo.</p>
+        </li>
+        <li>
+          <h3>Proteção</h3>
+          <p>Lona no piso, fita nos rodapés e móveis cobertos antes de começar.</p>
+        </li>
+        <li>
+          <h3>Execução</h3>
+          <p>Preparo da superfície, massa, lixa e as demãos combinadas.</p>
+        </li>
+        <li>
+          <h3>Entrega limpa</h3>
+          <p>Retiramos todo o material e fazemos a vistoria final com você.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <div style="display:grid;gap:16px;align-content:start">
+        <span class="tape" style="justify-self:start">Contato</span>
+        <h2>Agende uma visita</h2>
+        <p>Preencha ao lado e envie a mensagem pronta pelo WhatsApp. Se preferir, ligue:</p>
+        <span class="phone" id="phoneText"></span>
+      </div>
+      <form id="form" novalidate>
+        <div class="field"><label for="nome">Seu nome</label><input type="text" id="nome" autocomplete="name"></div>
+        <div class="field"><label for="bairro">Bairro</label><input type="text" id="bairro"></div>
+        <div class="field"><label for="servicoForm">Serviço</label><select id="servicoForm"></select></div>
+        <div class="field"><label for="msg">Detalhes (opcional)</label><textarea id="msg" rows="3"></textarea></div>
+        <div class="preview" id="preview"></div>
+        <div class="cta-row" style="margin-top:0">
+          <a class="btn" id="waLink" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+          <button type="button" class="btn ghost" id="copyBtn" style="color:var(--bg);border-color:var(--bg)">Copiar
+            mensagem</button>
+        </div>
+        <div class="status" id="status" role="status"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" id="footer"></div>
+  </footer>
+
+  <!-- Lógica da página (carregada no final para o HTML já existir) -->
+  <script src="script.js"></script>
+</body>
+
+</html>
